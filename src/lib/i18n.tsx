@@ -24,6 +24,7 @@ const dict: Dictionary = {
   python_generator: { en: "Python Generator", fr: "Générateur Python" },
   cpp_generator: { en: "C++ Generator", fr: "Générateur C++" },
   csharp_generator: { en: "C# Generator", fr: "Générateur C#" },
+  java_generator: { en: "Java Generator", fr: "Générateur Java" },
   difficulty: { en: "Difficulty", fr: "Difficulté" },
   easy: { en: "Easy", fr: "Facile" },
   normal: { en: "Normal", fr: "Normal" },
@@ -40,6 +41,12 @@ const dict: Dictionary = {
   start_learning: { en: "Start learning now", fr: "Commencez maintenant" },
   disclaimer_ai: { en: "Local helper: no internet required", fr: "Assistant local : sans internet" },
   open: { en: "Open", fr: "Ouvrir" },
+  login: { en: "Login", fr: "Connexion" },
+  logout: { en: "Logout", fr: "Déconnexion" },
+  username: { en: "Username", fr: "Nom d'utilisateur" },
+  password: { en: "Password", fr: "Mot de passe" },
+  sign_in: { en: "Sign in", fr: "Se connecter" },
+  sign_up: { en: "Sign up", fr: "Créer un compte" },
 };
 
 const I18nContext = createContext<{ locale: Locale; setLocale: (l: Locale) => void; t: (k: keyof typeof dict) => string } | null>(null);

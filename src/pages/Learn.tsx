@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import { cpp } from "@codemirror/lang-cpp";
+import { java } from "@codemirror/lang-java";
 import { StreamLanguage } from "@codemirror/language";
 // @ts-ignore - legacy mode
 import { lua as luaLegacy } from "@codemirror/legacy-modes/mode/lua";
@@ -21,6 +22,7 @@ function useLangExt(lang: CodeLang) {
     if (lang === "python") return [python()];
     if (lang === "cpp") return [cpp()];
     if (lang === "csharp") return [csharpLang()];
+    if (lang === "java") return [java()];
     return [StreamLanguage.define(luaLegacy)]; // lua/luau
   }, [lang]);
 }

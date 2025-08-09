@@ -1,4 +1,4 @@
-export type CodeLang = "python" | "lua" | "luau" | "cpp" | "csharp";
+export type CodeLang = "python" | "lua" | "luau" | "cpp" | "csharp" | "java";
 
 export const languagesMeta: Record<CodeLang, { chapters: number; levelsPerChapter: number; display: string } > = {
   python: { chapters: 9, levelsPerChapter: 15, display: "Python" },
@@ -6,6 +6,7 @@ export const languagesMeta: Record<CodeLang, { chapters: number; levelsPerChapte
   luau:   { chapters: 9, levelsPerChapter: 15, display: "Luau" },
   cpp:    { chapters: 10, levelsPerChapter: 20, display: "C++" },
   csharp: { chapters: 10, levelsPerChapter: 20, display: "C#" },
+  java:   { chapters: 10, levelsPerChapter: 20, display: "Java" },
 };
 
 export type Difficulty = "easy" | "normal" | "tryhard";
@@ -77,6 +78,16 @@ export function getSampleLevels(lang: CodeLang): LevelSpec[] {
           explanation: `Use Console.WriteLine to output text.`,
           instruction: "Print: Hello Code Master",
           validate: (code) => ({ ok: /Console\.WriteLine\s*\(\s*"Hello Code Master"\s*\)\s*;/.test(code), message: "Use Console.WriteLine(\"Hello Code Master\");" }),
+        },
+      ];
+    case "java":
+      return [
+        {
+          id: "java-1",
+          title: "Hello, Java!",
+          explanation: `Use System.out.println to output text.`,
+          instruction: "Print: Hello Code Master",
+          validate: (code) => ({ ok: /System\.out\.println\s*\(\s*"Hello Code Master"\s*\)\s*;/.test(code), message: "Use System.out.println(\"Hello Code Master\");" }),
         },
       ];
   }

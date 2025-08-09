@@ -26,11 +26,24 @@ const Index = () => {
               <Button onClick={() => openGuard("luau")}>{t("luau_generator")}</Button>
               <Button onClick={() => openGuard("cpp")}>{t("cpp_generator")}</Button>
               <Button onClick={() => openGuard("csharp")}>{t("csharp_generator")}</Button>
+              <Button onClick={() => openGuard("java")}>{t("java_generator")}</Button>
             </div>
           </div>
           <div className="relative">
             <img src={hero} alt="Code Master hero neon purple" className="rounded-xl border shadow-2xl" loading="lazy" />
             <div className="absolute -inset-2 -z-10 rounded-2xl blur-2xl opacity-40" style={{ background: "var(--gradient-primary)" }} />
+          </div>
+        </div>
+
+        <div className="rounded-xl border bg-secondary/30 p-6">
+          <div className="text-2xl font-display neon-title mb-2">Rejoignez le serveur pour les clés</div>
+          <a className="story-link" href="https://discord.gg/BSxeKTsX5V" target="_blank" rel="noreferrer">discord.gg/BSxeKTsX5V</a>
+          <div className="mt-4 grid sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+            <div className="rounded-md border p-3">Lua & Python — <strong>5€</strong></div>
+            <div className="rounded-md border p-3">Luau — <strong>8€</strong></div>
+            <div className="rounded-md border p-3">Java — <strong>15€</strong></div>
+            <div className="rounded-md border p-3">C++ — <strong>30€</strong></div>
+            <div className="rounded-md border p-3">C# — <strong>30€</strong></div>
           </div>
         </div>
       </section>
@@ -42,7 +55,7 @@ const Index = () => {
         </div>
       </footer>
 
-      <KeyAccessModal open={!!open} onOpenChange={() => setOpen(false)} onValid={onValid} />
+      <KeyAccessModal open={!!open} onOpenChange={() => setOpen(false)} onValid={onValid} lang={typeof open === "string" ? open : "python"} />
     </div>
   );
 };

@@ -3,16 +3,16 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { getAccessKey } from "@/lib/storage";
+import { getLangKey } from "@/lib/storage";
 import { useI18n } from "@/lib/i18n";
 
-export function KeyAccessModal({ open, onOpenChange, onValid }: { open: boolean; onOpenChange: (v: boolean) => void; onValid: () => void }) {
+export function KeyAccessModal({ open, onOpenChange, onValid, lang }: { open: boolean; onOpenChange: (v: boolean) => void; onValid: () => void; lang: string }) {
   const { t } = useI18n();
   const { toast } = useToast();
   const [inputKey, setInputKey] = useState("");
 
   const confirm = () => {
-    const saved = getAccessKey();
+    const saved = getLangKey(lang);
     if (saved && inputKey.trim() === saved) {
       toast({ title: t("access_granted") });
       onOpenChange(false);
