@@ -1,12 +1,48 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import hero from "@/assets/hero-code-master.jpg";
+import { Button } from "@/components/ui/button";
+import { useI18n } from "@/lib/i18n";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { KeyAccessModal } from "@/components/KeyAccessModal";
 
 const Index = () => {
+  const { t } = useI18n();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState<false | string>(false);
+
+  const openGuard = (lang: string) => setOpen(lang);
+  const onValid = () => { if (typeof open === "string") navigate(`/learn/${open}`); };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-grid relative">
+      <section className="max-w-[1200px] mx-auto px-4 py-16 grid gap-10">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-extrabold font-display leading-tight neon-title">{t("app_title")}</h1>
+            <p className="mt-4 text-muted-foreground max-w-prose">Dark neon coding journeys. 100% local. Timers. Integrated editor. Progress & badges. Bilingual AI helper.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button variant="hero" size="xl" onClick={() => openGuard("python")}>{t("python_generator")}</Button>
+              <Button onClick={() => openGuard("lua")}>{t("lua_generator")}</Button>
+              <Button onClick={() => openGuard("luau")}>{t("luau_generator")}</Button>
+              <Button onClick={() => openGuard("cpp")}>{t("cpp_generator")}</Button>
+              <Button onClick={() => openGuard("csharp")}>{t("csharp_generator")}</Button>
+            </div>
+          </div>
+          <div className="relative">
+            <img src={hero} alt="Code Master hero neon purple" className="rounded-xl border shadow-2xl" loading="lazy" />
+            <div className="absolute -inset-2 -z-10 rounded-2xl blur-2xl opacity-40" style={{ background: "var(--gradient-primary)" }} />
+          </div>
+        </div>
+      </section>
+
+      <footer className="max-w-[1200px] mx-auto px-4 pb-12 text-sm text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>Crédits : Neyroxx2.o · <a className="story-link" href="https://discord.gg/BSxeKTsX5V" target="_blank" rel="noreferrer">Discord</a></div>
+          <div>© {new Date().getFullYear()} Code Master</div>
+        </div>
+      </footer>
+
+      <KeyAccessModal open={!!open} onOpenChange={() => setOpen(false)} onValid={onValid} />
     </div>
   );
 };
